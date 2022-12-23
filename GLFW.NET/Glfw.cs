@@ -13,7 +13,7 @@ namespace GLFW
     ///     functions.
     /// </summary>
     [SuppressUnmanagedCodeSecurity]
-    public static class Glfw
+    public static partial class Glfw
     {
         #region Fields and Constants
 
