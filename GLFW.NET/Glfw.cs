@@ -5,6 +5,7 @@ using System.Text;
 using JetBrains.Annotations;
 
 #pragma warning disable 0419
+#pragma warning disable 1591
 
 namespace GLFW
 {
@@ -250,7 +251,7 @@ namespace GLFW
         public static extern void SetWindowAttribute(IntPtr window, WindowAttribute attr, bool value);
 
         [DllImport(LIBRARY, EntryPoint = "glfwGetJoystickHats", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr GetJoystickHats(int joystickId, out int count);
+        public static extern IntPtr GetJoystickHats(int joystickId, out int count);
 
         /// <summary>
         ///     Returns the state of all hats of the specified joystick as a bitmask.
@@ -271,7 +272,7 @@ namespace GLFW
         }
 
         [DllImport(LIBRARY, EntryPoint = "glfwGetJoystickGUID", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr GetJoystickGuidPrivate(int joystickId);
+        public static extern IntPtr GetJoystickGuidPrivate(int joystickId);
 
         /// <summary>
         ///     Returns the SDL compatible GUID, as a hexadecimal string, of the specified joystick.
@@ -314,7 +315,7 @@ namespace GLFW
         public static extern bool JoystickIsGamepad(int joystickId);
 
         [DllImport(LIBRARY, EntryPoint = "glfwUpdateGamepadMappings", CallingConvention = CallingConvention.Cdecl)]
-        private static extern bool UpdateGamepadMappings([NotNull] byte[] mappings);
+        public static extern bool UpdateGamepadMappings([NotNull] byte[] mappings);
 
         /// <summary>
         ///     Parses the specified string and updates the internal list with any gamepad mappings it finds.
@@ -331,7 +332,7 @@ namespace GLFW
         }
 
         [DllImport(LIBRARY, EntryPoint = "glfwGetGamepadName", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr GetGamepadNamePrivate(int gamepadId);
+        public static extern IntPtr GetGamepadNamePrivate(int gamepadId);
 
         /// <summary>
         ///     Returns the human-readable name of the gamepad from the gamepad mapping assigned to the specified joystick.
@@ -521,7 +522,7 @@ namespace GLFW
         public static extern ErrorCallback SetErrorCallback(ErrorCallback errorHandler);
 
         [DllImport(LIBRARY, EntryPoint = "glfwCreateWindow", CallingConvention = CallingConvention.Cdecl)]
-        private static extern Window CreateWindow(int width, int height, byte[] title, Monitor monitor, Window share);
+        public static extern Window CreateWindow(int width, int height, byte[] title, Monitor monitor, Window share);
 
         /// <summary>
         ///     This function destroys the specified window and its context. On calling this function, no further callbacks will be
@@ -644,7 +645,7 @@ namespace GLFW
         /// <param name="window">A window instance.</param>
         /// <param name="title">The title as an array of UTF-8 encoded bytes.</param>
         [DllImport(LIBRARY, EntryPoint = "glfwSetWindowTitle", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void SetWindowTitle(Window window, byte[] title);
+        public static extern void SetWindowTitle(Window window, byte[] title);
 
         /// <summary>
         ///     This function brings the specified window to front and sets input focus. The window should already be visible and
@@ -689,19 +690,19 @@ namespace GLFW
         /// <returns>A pointer to the null-terminated UTF-8 encoded version string.</returns>
         /// <seealso cref="VersionString" />
         [DllImport(LIBRARY, EntryPoint = "glfwGetVersionString", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr GetVersionString();
+        public static extern IntPtr GetVersionString();
 
         [DllImport(LIBRARY, EntryPoint = "glfwGetTime", CallingConvention = CallingConvention.Cdecl)]
-        private static extern double GetTime();
+        public static extern double GetTime();
 
         [DllImport(LIBRARY, EntryPoint = "glfwSetTime", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void SetTime(double time);
+        public static extern void SetTime(double time);
 
         [DllImport(LIBRARY, EntryPoint = "glfwGetTimerFrequency", CallingConvention = CallingConvention.Cdecl)]
-        private static extern ulong GetTimerFrequency();
+        public static extern ulong GetTimerFrequency();
 
         [DllImport(LIBRARY, EntryPoint = "glfwGetTimerValue", CallingConvention = CallingConvention.Cdecl)]
-        private static extern ulong GetTimerValue();
+        public static extern ulong GetTimerValue();
 
         /// <summary>
         ///     This function retrieves the size, in screen coordinates, of each edge of the frame of the specified window.
@@ -803,7 +804,7 @@ namespace GLFW
         /// <param name="extension">The extension name as an array of ASCII encoded bytes.</param>
         /// <returns><c>true</c> if the extension is supported; otherwise <c>false</c>.</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwExtensionSupported", CallingConvention = CallingConvention.Cdecl)]
-        private static extern bool GetExtensionSupported(byte[] extension);
+        public static extern bool GetExtensionSupported(byte[] extension);
 
         /// <summary>
         ///     This function resets all window hints to their default values.
@@ -915,13 +916,13 @@ namespace GLFW
         public static extern WindowCallback SetCloseCallback(Window window, WindowCallback closeCallback);
 
         [DllImport(LIBRARY, EntryPoint = "glfwGetPrimaryMonitor", CallingConvention = CallingConvention.Cdecl)]
-        private static extern Monitor GetPrimaryMonitor();
+        public static extern Monitor GetPrimaryMonitor();
 
         [DllImport(LIBRARY, EntryPoint = "glfwGetVideoMode", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr GetVideoModeInternal(Monitor monitor);
+        public static extern IntPtr GetVideoModeInternal(Monitor monitor);
 
         [DllImport(LIBRARY, EntryPoint = "glfwGetVideoModes", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr GetVideoModes(Monitor monitor, out int count);
+        public static extern IntPtr GetVideoModes(Monitor monitor, out int count);
 
         /// <summary>
         ///     Gets the handle of the monitor that the specified window is in full screen on.
@@ -989,10 +990,10 @@ namespace GLFW
         public static extern void SetGamma(Monitor monitor, float gamma);
 
         [DllImport(LIBRARY, EntryPoint = "glfwGetClipboardString", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr GetClipboardStringInternal(Window window);
+        public static extern IntPtr GetClipboardStringInternal(Window window);
 
         [DllImport(LIBRARY, EntryPoint = "glfwSetClipboardString", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void SetClipboardString(Window window, byte[] bytes);
+        public static extern void SetClipboardString(Window window, byte[] bytes);
 
         /// <summary>
         ///     Sets the file drop callback of the specified window, which is called when one or more dragged files
@@ -1011,7 +1012,7 @@ namespace GLFW
         public static extern FileDropCallback SetDropCallback(Window window, FileDropCallback dropCallback);
 
         [DllImport(LIBRARY, EntryPoint = "glfwGetMonitorName", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr GetMonitorNameInternal(Monitor monitor);
+        public static extern IntPtr GetMonitorNameInternal(Monitor monitor);
 
         /// <summary>
         ///     Creates a new custom cursor image that can be set for a window with glfwSetCursor.
@@ -1218,7 +1219,7 @@ namespace GLFW
         public static extern void SetWindowAspectRatio(Window window, int numerator, int denominator);
 
         [DllImport(LIBRARY, EntryPoint = "glfwGetCurrentContext", CallingConvention = CallingConvention.Cdecl)]
-        private static extern Window GetCurrentContext();
+        public static extern Window GetCurrentContext();
 
         /// <summary>
         ///     Gets the size, in millimeters, of the display area of the specified monitor.
@@ -1239,7 +1240,7 @@ namespace GLFW
         public static extern void GetMonitorPosition(Monitor monitor, out int x, out int y);
 
         [DllImport(LIBRARY, EntryPoint = "glfwGetMonitors", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr GetMonitors(out int count);
+        public static extern IntPtr GetMonitors(out int count);
 
         /// <summary>
         ///     Sets the character callback of the specified window, which is called when a Unicode character is
@@ -1300,7 +1301,7 @@ namespace GLFW
         public static extern InputState GetKey(Window window, Keys key);
 
         [DllImport(LIBRARY, EntryPoint = "glfwGetKeyName", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr GetKeyNameInternal(Keys key, int scanCode);
+        public static extern IntPtr GetKeyNameInternal(Keys key, int scanCode);
 
         /// <summary>
         ///     Sets the framebuffer resize callback of the specified window, which is called when the framebuffer of
@@ -1364,13 +1365,13 @@ namespace GLFW
         public static extern bool JoystickPresent(Joystick joystick);
 
         [DllImport(LIBRARY, EntryPoint = "glfwGetJoystickName", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr GetJoystickNameInternal(Joystick joystick);
+        public static extern IntPtr GetJoystickNameInternal(Joystick joystick);
 
         [DllImport(LIBRARY, EntryPoint = "glfwGetJoystickAxes", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr GetJoystickAxes(Joystick joystic, out int count);
+        public static extern IntPtr GetJoystickAxes(Joystick joystic, out int count);
 
         [DllImport(LIBRARY, EntryPoint = "glfwGetJoystickButtons", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr GetJoystickButtons(Joystick joystick, out int count);
+        public static extern IntPtr GetJoystickButtons(Joystick joystick, out int count);
 
         /// <summary>
         ///     Sets the joystick configuration callback, or removes the currently set callback.
@@ -1440,7 +1441,7 @@ namespace GLFW
             out int height);
 
         [DllImport(LIBRARY, EntryPoint = "glfwGetProcAddress", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr GetProcAddress(byte[] procName);
+        public static extern IntPtr GetProcAddress(byte[] procName);
 
         /// <summary>
         ///     Sets hints for the next call to <see cref="CreateWindow" />. The hints, once set, retain their values
@@ -1464,10 +1465,10 @@ namespace GLFW
         /// <param name="attribute">The attribute to retrieve.</param>
         /// <returns>The value of the <paramref name="attribute" />.</returns>
         [DllImport(LIBRARY, EntryPoint = "glfwGetWindowAttrib", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int GetWindowAttribute(Window window, int attribute);
+        public static extern int GetWindowAttribute(Window window, int attribute);
 
         [DllImport(LIBRARY, EntryPoint = "glfwGetError", CallingConvention = CallingConvention.Cdecl)]
-        private static extern ErrorCode GetErrorPrivate(out IntPtr description);
+        public static extern ErrorCode GetErrorPrivate(out IntPtr description);
 
         #endregion
 
